@@ -15,9 +15,9 @@
                             <hr>
                             <h4 class="card-title">Admin Email : {{$adminData->email}}</h4>
                             <hr>
-                            <h4 class="card-title">admin Name : {{$adminData->name }}</h4>
+                            <h4 class="card-title">Admin Name : {{$adminData->name }}</h4>
                             <hr>
-                            <a href="" class="btn btn-warning">Edit Profile</a>
+                            <a href="{{ route('edit.profile')}}" class="btn btn-warning">Edit Profile</a>
                         </div>
                     </div>
                 </div>
