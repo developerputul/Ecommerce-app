@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -52,12 +53,38 @@ public function Storeprofile(Request $request){
     #------------------toaster message------------------------------------#
     $notification = array(
         'message' => 'Admin Profile Updated Successfully',
-        'alert-type' =>'info'
+        'alert-type' =>'success'
     );
 
 
  return redirect()->route('admin.profile')->with( $notification);
 }
+#---------------------------------------changepassword--------------------------------#
+public function ChangePassword(){
+        return view('admin.admin_change_password');
+}
 
+#--------------------------------------updatepassword--------------------------------3
+public function UpdatePassword(Request $request){
+   $validateData = $request->validate([
+    'oldpassword' => 'required',
+    'newpassword' => 'required',
+    'confirm_password' => 'required|same:newpassword',
+   ]);
+   $hashedPassword = Auth::user()->password;
+   if (Hash::check($request->oldpassword, $hashedPassword )){
+    $users = User::find(Auth::id());
+    $users ->password = bcrypt($request->newpassword);
+    $users->save();
+
+    session()->flash('message', 'Password updated successfully');
+    return redirect()->back();
+
+ } else{
+    session()->flash('message', 'Old password incorrect');
+    return redirect()->back();
+ }
+
+}
 }
 //End destroy method
