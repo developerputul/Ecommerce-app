@@ -24,6 +24,7 @@
         <link href="{{asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{asset('backend/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     </head>
     <body data-topbar="dark">
@@ -50,7 +51,7 @@
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
-        
+
         <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js')}}"></script>
         <script src="{{ asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{ asset('backend/assets/libs/metismenu/metisMenu.min.js')}}"></script>
@@ -78,5 +79,32 @@
 
         <!-- App js -->
         <script src="{{ asset('backend/assets/js/app.js')}}"></script>
+
+
+        <!---------------------------------toaster message/link-------------------------------->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<!------------------------------toaster flash message start-------------------------------->
+        <script>
+            @if (Session::has ('message'))
+            var type="{{session::get('alert-type', 'info')}}"
+            switch (type) {
+                case 'info':
+                    toastr.info(" {{session::get('message')}} ");
+                    break;
+                case 'success':
+                    toastr.success(" {{session::get('message')}} ");
+                    break;
+                case 'warning':
+                    toastr.warning(" {{session::get('message')}} ");
+                    break;
+                case 'error':
+                    toastr.error(" {{session::get('message')}} ");
+                    break;
+            }
+            @endif
+        </script>
+
+
+<!------------------------------toaster end--------------------------------------------------->
     </body>
 </html>

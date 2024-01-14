@@ -19,13 +19,13 @@ class AdminController extends Controller
         return redirect('/login');
     }
 
-#---------------------------profile-------------------------------------#
+#---------------------------profile------------------------------------------#
     public function profile(){
             $id = Auth::user()->id;
             $adminData = User::find($id);
             return view('admin.admin_profile_view', compact('adminData'));
     }
-#-------------------------------EditProfile--------------------------------#
+#-------------------------------EditProfile------------------------------------#
 public function Editprofile(){
             $id = Auth::user()->id;
             $editData = User::find($id);
@@ -48,9 +48,15 @@ public function Storeprofile(Request $request){
 
 }
 
- $data->save();
- return redirect()->route('admin.profile');
+    $data->save();
+    #------------------toaster message------------------------------------#
+    $notification = array(
+        'message' => 'Admin Profile Updated Successfully',
+        'alert-type' =>'info'
+    );
 
+
+ return redirect()->route('admin.profile')->with( $notification);
 }
 
 }
