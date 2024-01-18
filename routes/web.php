@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,14 @@ Route::controller(AdminController::class)->group(function(){
 
     Route::get('change.password', 'Changepassword')->name('change.password');
     Route::post('update/password', 'UpdatePassword')->name('update.password');
+
+});
+
+#Home-slide
+Route::controller(HomeController::class)->group(function(){
+
+    Route::get('home/slide', 'HomeSlider')->name('home.slide');
+
 
 });
 

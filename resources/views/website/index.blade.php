@@ -1,5 +1,6 @@
 @extends('website.main_master')
 @section('main')
+
             <!-- banner-area -->
             <section class="banner">
                 <div class="container custom-container">
