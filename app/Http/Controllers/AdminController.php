@@ -56,8 +56,8 @@ public function Storeprofile(Request $request){
         'alert-type' =>'success'
     );
 
-
  return redirect()->route('admin.profile')->with( $notification);
+ 
 }
 #---------------------------------------changepassword--------------------------------#
 public function ChangePassword(){

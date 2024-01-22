@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class HomeSlide extends Model
 {
-    protected $guarded = [];
 
     use HasFactory;
+
+    protected $guarded = [];
 
     // protected $fillable = [
     //     'title',
@@ -17,5 +18,4 @@ class HomeSlide extends Model
     //     'home_slide',
     //     'video_url',
     // ];
-
 }

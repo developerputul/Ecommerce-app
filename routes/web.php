@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Home\HomeSliderController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Home\HomeController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,13 +43,11 @@ Route::controller(AdminController::class)->group(function(){
 });
 
 #Home-slide
-Route::controller(HomeController::class)->group(function(){
+Route::controller(HomeSliderController::class)->group(function(){
 
     Route::get('home/slide', 'HomeSlider')->name('home.slide');
-
-
+    
 });
-
 
 
 
