@@ -11,10 +11,10 @@
                 <div class="card-body">
                     <h4 class="card-title">Home Slide Page</h4>
                 <!-------------------form-------------------------------->
-                <form method="post" action="{{route('store.profile')}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('update.slider')}}" enctype="multipart/form-data">
 
                     @csrf
-
+                    <input type="hidden" name="id" value="{{ $homeslide->id }}">
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                         <div class="col-sm-10">
@@ -25,14 +25,14 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Short Title</label>
                         <div class="col-sm-10">
-                            <input name="email" class="form-control" type="text" value="{{$homeslide->short_title}}" id="example-text-input">
+                            <input name="short_title" class="form-control" type="text" value="{{$homeslide->short_title}}" id="example-text-input">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Video URL</label>
                         <div class="col-sm-10">
-                            <input name="name" class="form-control" type="text" value="{{$homeslide->video_url}}" id="example-text-input">
+                            <input name="video_url" class="form-control" type="text" value="{{$homeslide->video_url}}" id="example-text-input">
                         </div>
                     </div>
 
@@ -46,7 +46,7 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <img id="showImage" class="rounded avatar-lg" alt="200x200" src="{{ (!empty($homeslide->home_slide)) ?url('upload/home_slide/'.$homeslide->home_slide):url('upload/no_image.jpg')}}" data-holder-rendered="true">
+                            <img id="showImage" class="rounded avatar-lg" alt="224x224" src="{{ url($homeslide->home_slide) ?? url('upload/no_image.jpg')}}" data-holder-rendered="true">
                         </div>
                     </div>
                     <input type="Submit" class="btn btn-info" value="Update Slide">

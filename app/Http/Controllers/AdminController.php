@@ -57,7 +57,7 @@ public function Storeprofile(Request $request){
     );
 
  return redirect()->route('admin.profile')->with( $notification);
- 
+
 }
 #---------------------------------------changepassword--------------------------------#
 public function ChangePassword(){
