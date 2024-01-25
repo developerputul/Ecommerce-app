@@ -46,7 +46,9 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <img id="showImage" class="rounded avatar-lg" alt="200x200" src="{{ (!empty($editData->profile_image)) ?url('upload/admin_images/'.$editData->profile_image):url('upload/no_image.jpg')}}" data-holder-rendered="true">
+                            {{-- <img id="showImage" class="rounded avatar-lg" alt="224x224" src="{{ asset($editData->profile_image) ?? asset('upload/no_image.jpg')}}" data-holder-rendered="true"> --}}
+                            {{-- Using Auth --}}
+                            <img id="showImage" class="rounded avatar-lg" alt="224x224" src="{{ asset(auth()->user()->profile_image) ?? asset('upload/no_image.jpg')}}" data-holder-rendered="true">
                         </div>
                     </div>
                     <input type="Submit" class="btn btn-info" value="Update Profile">

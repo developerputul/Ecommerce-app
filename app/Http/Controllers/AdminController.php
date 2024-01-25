@@ -45,7 +45,7 @@ public function Storeprofile(Request $request){
 
          $filename = date('YmdHi').$file->getClientOriginalName();
          $file->move(public_path('upload/admin_images'),$filename);
-         $data['profile_image'] = $filename;
+         $data['profile_image'] = 'upload/admin_images/' . $filename;
 
 }
 

@@ -11,6 +11,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Home Slide Page</h4>
                 <!-------------------form-------------------------------->
+                @if($homeslide)
                 <form method="post" action="{{route('update.slider')}}" enctype="multipart/form-data">
 
                     @csrf
@@ -46,17 +47,20 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <img id="showImage" class="rounded avatar-lg" alt="224x224" src="{{ url($homeslide->home_slide) ?? url('upload/no_image.jpg')}}" data-holder-rendered="true">
+                            <img id="showImage" class="rounded avatar-lg" alt="224x224" src="{{ asset($homeslide->profile_image) ?? asset('upload/no_image.jpg')}}" data-holder-rendered="true">
                         </div>
                     </div>
                     <input type="Submit" class="btn btn-info" value="Update Slide">
                 </form>
+                @else
+                    <p>No data found in the database !</p>
+                @endif
                 <!----------------end--------------------->
                 </div>
             </div>
         </div>
     </div>
-</div>
+  </div>
 </div>
 
 <script type="text/javascript">
@@ -73,3 +77,5 @@
 </script>
 
 @endsection
+
+
