@@ -22,7 +22,7 @@ class AboutController extends Controller
         $hasFile = $request->hasFile('about_image');
         if ($hasFile) {
             $imageName =  hexdec(uniqid()) . '.' . time() . "." . $image->getClientOriginalName();
-            $image->move("upadte/about_image/", $imageName);
+            $image->move("upload/about_image/", $imageName);
             $save_url = 'upload/about_image/' . $imageName;
 
 
@@ -59,5 +59,12 @@ class AboutController extends Controller
         }
     } //end Methods
 
+
+    public function HomeAbout()
+    {
+        $aboutpage = About::find(1);
+        return view('website.about_page', compact('aboutpage'));
+
+    } //end Methods
 
 }
