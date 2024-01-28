@@ -49,7 +49,7 @@
                         </div>
                         <div class="about__exp">
                              <div class="about__exp__icon">
-                                <img src="assets/img/icons/about_icon.png" alt="">
+                                <img src="{{asset('Frontend/assets/img/icons/about_icon.png')}}" alt="">
                             </div>
                             <div class="about__exp__content">
                                 <p><span>{{$aboutpage->short_title}}</span></p>
