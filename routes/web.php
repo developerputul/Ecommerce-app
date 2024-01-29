@@ -43,14 +43,14 @@ Route::controller(AdminController::class)->group(function(){
 
 });
 
-#Home-slide all routes
+    #Home-slide all routes
 Route::controller(HomeSliderController::class)->group(function(){
     #Home
     Route::get('home/slide', 'HomeSlider')->name('home.slide');
     Route::post('update/slider', 'UpdateSlider')->name('update.slider');
 });
 
-#About-page all routes
+    #About-page all routes
 Route::controller(AboutController::class)->group(function(){
     #About
     Route::get('about/page', 'AboutPage')->name('about.page');
@@ -58,9 +58,17 @@ Route::controller(AboutController::class)->group(function(){
     Route::get('/about', 'HomeAbout')->name('home.about');
 
 
-
+    #About-page all routes
     Route::get('/about/multi/image', 'AboutMultiImage')->name('about.multi.image');
     Route::post('store/multi/image', 'StoreMultiImage')->name('store.multi.image');
+    
+    Route::get('all/multi/image', 'AllMultiImage')->name('all.multi.image');
+    Route::get('edit/multi/image/{id}', 'EditMultiImage')->name('edit.multi.image');
+
+    Route::post('update/multi/image', 'UpdateMultiImage')->name('update.multi.image');
+
+
+
 
 });
 

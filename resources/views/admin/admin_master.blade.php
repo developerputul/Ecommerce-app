@@ -36,7 +36,7 @@
 
             <!-- ========== Left Sidebar Start ========== -->
              @include('admin.body.sidebar')
-             
+
             <!-- Left Sidebar End -->
             <!-- ============================================================== -->
             <!-- Start right Content here -->
@@ -107,7 +107,11 @@
             @endif
         </script>
 
+             <!-- Required datatable js -->
+             <script src="{{asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+             <script src="{{asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 
-<!------------------------------toaster end--------------------------------------------------->
+             <!-- Datatable init js -->
+             <script src="{{asset('backend/assets/js/pages/datatables.init.js')}}"></script>
     </body>
 </html>
