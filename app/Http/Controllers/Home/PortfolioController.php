@@ -33,7 +33,7 @@ class PortfolioController extends Controller
             'portfolio_name.required' => 'portfolio Name is required',
             'portfolio_title.required' => 'portfolio Title is required',
         ]);
-        
+
         $image = $request->file('portfolio_image');
         $imageName =  hexdec(uniqid()) . '.' . time() . "." . $image->getClientOriginalName();
         $image->move("upload/portfolio/", $imageName);
@@ -55,4 +55,68 @@ class PortfolioController extends Controller
         );
         return redirect()->route('all.portfolio')->with($notification);
     } // End PortfolioController
+
+    public function EditPortfolio($id){
+
+        $portfolio = Portfolio::findOrFail($id);
+        return view('admin.portfolio.portfolio_edit', compact('portfolio'));
+
+    } // End PortfolioController
+
+    public function UpdatePortfolio(Request $request)
+    {
+        $portfolio_id = $request->id;
+
+        $image = $request->file('portfolio_image');
+        $hasFile = $request->hasFile('portfolio_image');
+        if ($hasFile) {
+            $imageName =  hexdec(uniqid()) . '.' . time() . "." . $image->getClientOriginalName();
+            $image->move("upload/portfolio/", $imageName);
+            $save_url = 'upload/portfolio/' . $imageName;
+
+
+            Portfolio::findOrFail($portfolio_id)->update([
+                'portfolio_name' => $request->portfolio_name,
+                'portfolio_title' => $request->portfolio_title,
+                'portfolio_description' => $request->portfolio_description,
+                'portfolio_image' => $save_url,
+            ]);
+
+            $notification = array(
+                'message' => 'Portfolio Updated with Image Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('all.portfolio')->with($notification);
+
+        } else {
+
+            Portfolio::findOrFail($portfolio_id)->update([
+                'portfolio_name' => $request->portfolio_name,
+                'portfolio_title' => $request->portfolio_title,
+                'portfolio_description' => $request->portfolio_description,
+            ]);
+            $notification = array(
+                'message' => 'Portfolio Updated without Image Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('all.portfolio')->with($notification);
+        }
+    } //end Methods
+
+    public function DeletePortfolio($id){
+
+        $portfolio = Portfolio::findOrFail($id);
+        $img = $portfolio->portfolio_image;
+        unlink($img);
+
+        Portfolio::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Portfolio Image Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+
+    } //end Methods
+
 }
