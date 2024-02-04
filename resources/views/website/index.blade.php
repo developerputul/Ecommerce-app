@@ -267,8 +267,8 @@
                                             </div>
                                             <div class="portfolio__overlay__content">
                                                 <span>Apps Design</span>
-                                                <h4 class="title"><a href="portfolio-details.html">Banking Management System</a></h4>
-                                                <a href="portfolio-details.html" class="link">Case Study</a>
+                                                <h4 class="title"><a href="{{asset('Frontend/portfolio-details.html')}}">Banking Management System</a></h4>
+                                                <a href="{{asset('Frontend/portfolio-details.html')}}" class="link">Case Study</a>
                                             </div>
                                         </div>
                                         <div class="portfolio__item">

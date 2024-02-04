@@ -40,6 +40,7 @@ class HomeSliderController extends Controller
                 'alert-type' => 'success'
             );
             return redirect()->back()->with($notification);
+            
         } else {
 
             HomeSlide::findOrFail($slide_id)->update([

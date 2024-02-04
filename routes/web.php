@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\HomeSliderController;
 use  App\Http\Controllers\Home\AboutController;
+use  App\Http\Controllers\Home\PortfolioController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -44,7 +45,7 @@ Route::controller(AdminController::class)->group(function(){
 });
 
     #Home-slide all routes
-Route::controller(HomeSliderController::class)->group(function(){
+    Route::controller(HomeSliderController::class)->group(function(){
     #Home
     Route::get('home/slide', 'HomeSlider')->name('home.slide');
     Route::post('update/slider', 'UpdateSlider')->name('update.slider');
@@ -65,14 +66,18 @@ Route::controller(AboutController::class)->group(function(){
     Route::get('all/multi/image', 'AllMultiImage')->name('all.multi.image');
     Route::get('edit/multi/image/{id}', 'EditMultiImage')->name('edit.multi.image');
     Route::get('delete/multi/image/{id}', 'DeleteMultiImage')->name('delete.multi.image');
-
-
     Route::post('update/multi/image', 'UpdateMultiImage')->name('update.multi.image');
-
-
-
 });
 
+
+    #Portfolio-all routes
+    Route::controller(PortfolioController::class)->group(function(){
+        #Home
+        Route::get('all/portfolio', 'AllPortfolio')->name('all.portfolio');
+        Route::get('add/portfolio', 'AddPortfolio')->name('add.portfolio');
+        Route::post('store/portfolio', 'StorePortfolio')->name('store.portfolio');
+
+    });
 
 
 

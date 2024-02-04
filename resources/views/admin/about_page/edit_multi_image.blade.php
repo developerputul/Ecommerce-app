@@ -17,7 +17,7 @@
                 <form method="post" action="{{route('update.multi.image')}}" enctype="multipart/form-data">
                     @csrf
 
-                    <input type="text" name="id" value="{{$multiImage->id}}">
+                    <input type="hidden" name="id" value="{{$multiImage->id}}">
 
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">About Multi Image</label>
