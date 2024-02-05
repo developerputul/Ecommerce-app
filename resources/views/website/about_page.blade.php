@@ -1,6 +1,7 @@
 
 @extends('website.main_master')
 @section('main')
+
 <main>
     <!-- breadcrumb-area -->
     <section class="breadcrumb__wrap">
