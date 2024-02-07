@@ -3,6 +3,15 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+<style type="text/css">
+.bootstrap-tagsinput .tag{
+    margin-right: 2px;
+    color: #b70000;
+    font-weight: 700px;
+}
+
+</style>
+
 <div class="page-content">
 <div class="container-fluid">
 
@@ -10,30 +19,31 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mt-2">Portfolio Add page</h4>
+                    <h4 class="card-title mt-2"> Blog page</h4>
 
 
                 <form method="post" action="{{route('store.portfolio')}}" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="">
                     <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Portfolio Name</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Blog Category Name</label>
                         <div class="col-sm-10">
-                            <input name="portfolio_name" class="form-control" type="text" id="example-text-input">
-
-                            @error('portfolio_name')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                            <select name="blog_category_id" class="form-select" aria-label="Default select example">
+                                <option selected="">Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                                </select>
 
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Portfolio Title</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Blog Title</label>
                         <div class="col-sm-10">
-                            <input name="portfolio_title" class="form-control" type="text" id="example-text-input">
+                            <input name="blog_title" class="form-control" type="text" id="example-text-input">
 
-                            @error('portfolio_title')
+                            @error('blog_title')
                             <span class="text-danger">{{ $message }}</span>
                           @enderror
 
@@ -41,12 +51,21 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Portfolio Description</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Blog tags</label>
                         <div class="col-sm-10">
-                            <textarea name="portfolio_description" class="form-control" rows="8">
+                            <input name="blog_tags" value="home,tech" class="form-control" type="text" data-role="tagsinput">
+
+
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Blog Description</label>
+                        <div class="col-sm-10">
+                            <textarea name="blog_desc" class="form-control" rows="8">
                             </textarea>
 
-                            @error('portfolio_description')
+                            @error('blog_desc')
                             <span class="text-danger">{{ $message }}</span>
                           @enderror
 
@@ -54,19 +73,18 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Portfolio Image</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Blog Image</label>
                         <div class="col-sm-10">
-                            <input name="portfolio_image" class="form-control" type="file" id="image">
+                            <input name="blog_image" class="form-control" type="file" id="image">
                         </div>
                     </div>
-
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <img id="showImage" class="rounded avatar-lg" alt="506x590" src="" data-holder-rendered="true">
+                            <img id="showImage" class="rounded avatar-lg" alt="506x590" src="{{ isset($blogimage) ? asset($blogimage->blog_image) : asset('about/no_image.jpg') }}" data-holder-rendered="true">
                         </div>
                     </div>
-                    <input type="Submit" class="btn btn-info" value="Update Portfolio Page">
+                    <input type="Submit" class="btn btn-info" value="Insert Blog Data">
                 </form>
                 <!----------------end--------------------->
                 </div>
@@ -90,5 +108,3 @@
 </script>
 
 @endsection
-
-
