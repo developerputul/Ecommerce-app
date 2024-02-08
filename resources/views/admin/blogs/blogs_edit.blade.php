@@ -19,11 +19,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mt-2">Add Blog page</h4>
+                    <h4 class="card-title mt-2">Edit Blog page</h4>
 
-                <form method="post" action="{{route('store.blog')}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('update.blog')}}" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="id" value="">
+                    <input type="hidden" name="id" value="{{$blogs->id}}">
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Blog Category Name</label>
                         <div class="col-sm-10">
@@ -31,7 +31,7 @@
                                 <option selected="">Open this select menu</option>
 
                                 @foreach ($categories as $cat)
-                                <option value="{{ $cat->id }}">{{ $cat->blog_category }}</option>
+                                <option value="{{ $cat->id }}" {{$cat->id == $blogs->blog_category_id ? 'selected' : ''}}>{{ $cat->blog_category }}</option>
                                 @endforeach
 
                                 </select>
@@ -42,19 +42,14 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Blog Title</label>
                         <div class="col-sm-10">
-                            <input name="blog_title" class="form-control" type="text" id="example-text-input">
-
-                            @error('blog_title')
-                            <span class="text-danger">{{ $message }}</span>
-                          @enderror
-
+                            <input name="blog_title" class="form-control" value="{{ $blogs->blog_title}}" type="text" id="example-text-input">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Blog tags</label>
                         <div class="col-sm-10">
-                            <input name="blog_tags" value="home,tech" class="form-control" type="text" data-role="tagsinput">
+                            <input name="blog_tags" value="{{ $blogs->blog_tags}}" class="form-control" type="text" data-role="tagsinput">
 
 
                         </div>
@@ -64,7 +59,7 @@
                         <label for="example-text-input" class="col-sm-2 col-form-label">Blog Description</label>
                         <div class="col-sm-10">
                             <textarea name="blog_desc" class="form-control" rows="8">
-
+                                {{ $blogs->blog_desc}}
                             </textarea>
 
                             @error('blog_desc')
@@ -83,10 +78,10 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <img id="showImage" class="rounded avatar-lg" alt="506x590" src="{{ isset($blogimage) ? asset($blogimage->blog_image) : asset('about/no_image.jpg') }}" data-holder-rendered="true">
+                            <img id="showImage" class="rounded avatar-lg" alt="506x590" src="{{ asset($blogs->blog_image) }}" data-holder-rendered="true">
                         </div>
                     </div>
-                    <input type="Submit" class="btn btn-info" value="Insert Blog Data">
+                    <input type="Submit" class="btn btn-info" value="Update Blog Data">
                 </form>
                 <!----------------end--------------------->
                 </div>

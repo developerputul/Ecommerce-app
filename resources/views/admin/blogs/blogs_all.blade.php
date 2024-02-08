@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Blogs All</h4>
+                    <h4 class="mb-sm-0">All Blogs</h4>
 
                 </div>
             </div>
@@ -20,7 +20,7 @@
         <div class="card">
             <div class="card-body">
 
-                <h4 class="card-title"> Blog  AllData</h4>
+                <h4 class="card-title">All Blog Data</h4>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap"
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
@@ -29,9 +29,7 @@
                         <th>Blog Category</th>
                         <th>Blog Title</th>
                         <th>Blog Tags</th>
-                        <th>Blog Title</th>
                         <th>Blog Image</th>
-                        {{-- <th>Portfolio_description</th> --}}
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -42,14 +40,15 @@
                     @foreach ($blogs as $item)
                     <tr>
                         <td> {{$i++}} </td>
-                        <td> {{$item->blog_category_id}} </td>
+                        <td> {{$item['category']['blog_category']}} </td>
                         <td> {{$item->blog_title}} </td>
-                        <td> {{$item->blog_category_id}} </td>
                         <td> {{$item->blog_tags}} </td>
+                        {{-- <td> {{$item->blog_desc}} </td> --}}
+                        {{-- <td> {{$item->blog_image}} </td> --}}
                         <td><img src="{{asset ($item->blog_image)}}" style="width: 70px; heigh: 60px;">
                         </td>
                         <td>
-                            <a href="{{ route ('edit.portfolio', $item->id)}}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
+                            <a href="{{ route ('edit.blog', $item->id)}}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
                             <a href="{{ route ('delete.portfolio', $item->id)}}" class="btn btn-danger sm" title="Delete Data" id="delete"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
