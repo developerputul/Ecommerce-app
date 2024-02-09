@@ -102,8 +102,24 @@ class BlogController extends Controller
             );
             return redirect()->route('all.blog')->with($notification);
 
-    } //end Method
-}
+    } // end else
+} //end Method
+
+public function DeleteBlog($id){
+
+
+    $blogs = Blog::findOrFail($id);
+    $img = $blogs->blog_image;
+    unlink($img);
+
+    Blog::findOrFail($id)->delete();
+
+    $notification = array(
+        'message' => 'Blog Image Deleted Successfully',
+        'alert-type' => 'success'
+    );
+    return redirect()->back()->with($notification);
+} // end Method
 
 }
 

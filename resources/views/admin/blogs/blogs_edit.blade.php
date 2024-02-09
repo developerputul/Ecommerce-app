@@ -58,8 +58,9 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Blog Description</label>
                         <div class="col-sm-10">
-                            <textarea name="blog_desc" class="form-control" rows="8">
+                            <textarea name="blog_desc" class="form-control">
                                 {{ $blogs->blog_desc}}
+                                {{-- {!! $blogs->blog_desc !!} --}}
                             </textarea>
 
                             @error('blog_desc')
