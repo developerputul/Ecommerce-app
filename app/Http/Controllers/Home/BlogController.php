@@ -124,7 +124,7 @@ public function DeleteBlog($id){
 
 public function BlogDetails($id){
 
-    $allblogs = Blog::latest()->limit(5)->get();
+    $allblogs = Blog::latest()->limit(6)->get();
     $blogs = Blog::findOrFail($id);
     $categories = BlogCategory::orderBy('blog_category', 'ASC')->get();
     return view('website.blog_details', compact('blogs', 'allblogs', 'categories'));
@@ -132,8 +132,11 @@ public function BlogDetails($id){
      } // end Method
 
      public function CategoryBlog($id){
+
         $blogpost = Blog::where('blog_category_id', $id)->orderBy('id', 'DESC')->get();
-        return view('website.cat_blog_details', compact('blogpost'));
+        $allblogs = Blog::latest()->limit(6)->get();
+        $categories = BlogCategory::orderBy('blog_category', 'ASC')->get();
+        return view('website.cat_blog_details', compact('blogpost', 'allblogs', 'categories'));
      } // end Method
 
 

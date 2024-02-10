@@ -1,6 +1,6 @@
 @php
 
-$blogs = App\Models\Blog::latest()->limit(5)->get();
+$blogs = App\Models\Blog::latest()->limit(6)->get();
 @endphp
 
 <section class="blog">

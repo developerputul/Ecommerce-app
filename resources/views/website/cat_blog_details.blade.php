@@ -42,6 +42,7 @@
             <div class="col-lg-8">
                 <div class="standard__blog__post">
 
+
                     @foreach ($blogpost as $item)
 
                     <div class="standard__blog__thumb">
@@ -65,15 +66,16 @@
 
                 @endforeach
 
-                <div class="pagination-wrap">
+
+
+                 <div class="pagination-wrap">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-left"></i></a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-right"></i></a></li>
+                          <li class="page-item">
+                             <a class="page-link" href="#">
+                                <i class="far fa-long-arrow-left"></i>
+                             </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -86,73 +88,39 @@
                             <button type="submit"><i class="fal fa-search"></i></button>
                         </form>
                     </div>
+
                     <div class="widget">
                         <h4 class="widget-title">Recent Blog</h4>
                         <ul class="rc__post">
+
+                            @foreach ($allblogs as $all)
                             <li class="rc__post__item">
                                 <div class="rc__post__thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/rc_thumb01.jpg" alt=""></a>
+                                    <a href="blog-details.html"><img src="{{ asset($all->blog_image)}}" alt=""></a>
                                 </div>
                                 <div class="rc__post__content">
-                                    <h5 class="title"><a href="blog-details.html">Best website traffick booster with
-                                    great tools.</a></h5>
-                                    <span class="post-date"><i class="fal fa-calendar-alt"></i> 28 january 2021</span>
+                                    <h5 class="title"><a href="blog-details.html">{{ $all->blog_title}}</a></h5>
+                                    <span class="post-date"><i class="fal fa-calendar-alt"></i>{{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }}</span>
                                 </div>
                             </li>
-                            <li class="rc__post__item">
-                                <div class="rc__post__thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/rc_thumb02.jpg" alt=""></a>
-                                </div>
-                                <div class="rc__post__content">
-                                    <h5 class="title"><a href="blog-details.html">How to become a best sale marketer
-                                    in a year!</a></h5>
-                                    <span class="post-date"><i class="fal fa-calendar-alt"></i> 28 january 2021</span>
-                                </div>
-                            </li>
-                            <li class="rc__post__item">
-                                <div class="rc__post__thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/rc_thumb03.jpg" alt=""></a>
-                                </div>
-                                <div class="rc__post__content">
-                                    <h5 class="title"><a href="blog-details.html">Google take latest step & catch the
-                                    black SEO</a></h5>
-                                    <span class="post-date"><i class="fal fa-calendar-alt"></i> 28 january 2021</span>
-                                </div>
-                            </li>
-                            <li class="rc__post__item">
-                                <div class="rc__post__thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/rc_thumb04.jpg" alt=""></a>
-                                </div>
-                                <div class="rc__post__content">
-                                    <h5 class="title"><a href="blog-details.html">Businesses are thriving societies. Time for urgent change</a></h5>
-                                    <span class="post-date"><i class="fal fa-calendar-alt"></i> 28 january 2021</span>
-                                </div>
-                            </li>
-                            <li class="rc__post__item">
-                                <div class="rc__post__thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/rc_thumb05.jpg" alt=""></a>
-                                </div>
-                                <div class="rc__post__content">
-                                    <h5 class="title"><a href="blog-details.html">TikTok influencer marketing:How to
-                                    work with influencer</a></h5>
-                                    <span class="post-date"><i class="fal fa-calendar-alt"></i> 28 january 2021</span>
-                                </div>
-                            </li>
+                            @endforeach
+
                         </ul>
                     </div>
+
                     <div class="widget">
                         <h4 class="widget-title">Categories</h4>
                         <ul class="sidebar__cat">
-                            <li class="sidebar__cat__item"><a href="blog.html">Web Design (6)</a></li>
-                            <li class="sidebar__cat__item"><a href="blog.html">Web Development (4)</a></li>
-                            <li class="sidebar__cat__item"><a href="blog.html">Product Design (9)</a></li>
-                            <li class="sidebar__cat__item"><a href="blog.html">Animation (6)</a></li>
-                            <li class="sidebar__cat__item"><a href="blog.html">Ui/Ux Design (8)</a></li>
-                            <li class="sidebar__cat__item"><a href="blog.html">Branding Design (12)</a></li>
-                            <li class="sidebar__cat__item"><a href="blog.html">Web Design (6)</a></li>
-                            <li class="sidebar__cat__item"><a href="blog.html">Logo Design (6)</a></li>
+                            @foreach ($categories as $cat)
+                            <li class="sidebar__cat__item">
+                                <a href="{{ route('category.blog', $cat->id) }}">
+                                {{ $cat->blog_category}}</a>
+                            </li>
+                            @endforeach
                         </ul>
                     </div>
+
+
                     <div class="widget">
                         <h4 class="widget-title">Recent Comment</h4>
                         <ul class="sidebar__comment">
