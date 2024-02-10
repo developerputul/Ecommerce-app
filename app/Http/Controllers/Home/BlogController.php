@@ -67,6 +67,7 @@ class BlogController extends Controller
         $image = $request->file('blog_image');
         $hasFile = $request->hasFile('blog_image');
         if ($hasFile) {
+
             $imageName =  hexdec(uniqid()) . '.' . time() . "." . $image->getClientOriginalName();
             $image->move("upload/blog/", $imageName);
             $save_url = 'upload/blog/' . $imageName;
@@ -119,8 +120,23 @@ public function DeleteBlog($id){
         'alert-type' => 'success'
     );
     return redirect()->back()->with($notification);
-} // end Method
+ } // end Method
 
-}
+public function BlogDetails($id){
+
+    $allblogs = Blog::latest()->limit(5)->get();
+    $blogs = Blog::findOrFail($id);
+    $categories = BlogCategory::orderBy('blog_category', 'ASC')->get();
+    return view('website.blog_details', compact('blogs', 'allblogs', 'categories'));
+
+     } // end Method
+
+     public function CategoryBlog($id){
+        $blogpost = Blog::where('blog_category_id', $id)->orderBy('id', 'DESC')->get();
+        return view('website.cat_blog_details', compact('blogpost'));
+     } // end Method
+
+
+ }
 
 

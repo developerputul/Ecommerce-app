@@ -4010,9 +4010,9 @@ Breadcrumb
       color: #191B1E;
       line-height: 1; }
       .blog__post__content .read__more::after {
-        content: "\f30b";
+        content: "\2192";
         font-family: "Font Awesome 5 Pro";
-        font-weight: 700;
+        font-weight: 900;
         margin-left: 8px; }
       .blog__post__content .read__more:hover {
         color: #0054FF; }
