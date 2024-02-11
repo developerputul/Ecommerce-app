@@ -136,7 +136,15 @@ public function BlogDetails($id){
         $blogpost = Blog::where('blog_category_id', $id)->orderBy('id', 'DESC')->get();
         $allblogs = Blog::latest()->limit(6)->get();
         $categories = BlogCategory::orderBy('blog_category', 'ASC')->get();
-        return view('website.cat_blog_details', compact('blogpost', 'allblogs', 'categories'));
+        $categoryname = BlogCategory::findOrFail($id);
+        return view('website.cat_blog_details', compact('blogpost', 'allblogs', 'categories', 'categoryname'));
+     } // end Method
+
+     public function HomeBlog(){
+
+        $categories = BlogCategory::orderBy('blog_category', 'ASC')->get();
+        $allblogs = Blog::latest()->get();
+        return view('website.blog', compact('allblogs', 'categories'));
      } // end Method
 
 

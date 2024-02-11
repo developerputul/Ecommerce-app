@@ -43,12 +43,12 @@
                 </div>
                 <div class="blog__details__content services__details__content">
                     <ul class="blog__post__meta">
-                        <li><i class="fal fa-calendar-alt"></i>{{ Carbon\Carbon::parse($blogs->created_at)->diffForHumans() }}</li>
-
-
+                        <li>
+                         <i class="fal fa-calendar-alt">
+                        </i>{{ Carbon\Carbon::parse($blogs->created_at)->diffForHumans() }}</li>
                     </ul>
                     <h2 class="title">{{ $blogs->blog_title}}</h2>
-                    <p>{{ $blogs->blog_desc}}</p>
+                    <p>{{ $blogs->blog_desc }}</p>
                 </div>
                 <div class="blog__details__bottom">
                     <ul class="blog__details__tag">
@@ -216,7 +216,7 @@
                                 <span class="post-date"><i class="fal fa-calendar-alt"></i>{{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }}</span>
                             </div>
                         </li>
-                        @endforeach
+                    @endforeach
 
                     </ul>
                 </div>
@@ -228,10 +228,9 @@
                         @foreach ($categories as $cat)
                         <li class="sidebar__cat__item">
                             <a href="{{ route('category.blog', $cat->id) }}">
-                            {{ $cat->blog_category}}</a>
+                            {{ $cat->blog_category  }}</a>
                         </li>
                         @endforeach
-
                     </ul>
                 </div>
 
