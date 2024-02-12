@@ -1,26 +1,18 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Home\HomeSliderController;
+use  App\Http\Controllers\ProfileController;
+use  App\Http\Controllers\AdminController;
+use  App\Http\Controllers\Home\HomeSliderController;
 use  App\Http\Controllers\Home\AboutController;
 use  App\Http\Controllers\Home\PortfolioController;
 use  App\Http\Controllers\Home\BlogCategoryController;
-use App\Http\Controllers\Home\BlogController;
+use  App\Http\Controllers\Home\BlogController;
+use App\Http\Controllers\Home\FooterController;
 
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\Group;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+//Route section
 
 Route::get('/', function () {
     return view('website.index');
@@ -112,6 +104,14 @@ Route::controller(AboutController::class)->group(function(){
         Route::get('/blog', 'HomeBlog')->name('home.blog');
 
     });
+        #Footer-all routes
+        Route::controller(FooterController::class)->group(function(){
+            #Home
+            Route::get('footer/all', 'FooterAll')->name('footer.all');
+
+        });
+
+
 
 
 
