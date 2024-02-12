@@ -14,12 +14,12 @@
                     <h4 class="card-title mt-2">Footer Page</h4>
                 <!-------------------form-------------------------------->
                 @if($allfooter)
-                <form method="post" action="{{route('update.about')}}">
+                <form method="post" action="{{route('update.footer')}}">
 
                     @csrf
                     <input type="hidden" name="id" value="{{ $allfooter->id }}">
 
-                    <div class="row mb-3">
+                    <div class="row mb-3 mt-5">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Number</label>
                         <div class="col-sm-10">
                             <input name="number" class="form-control" type="text" value="{{$allfooter->number}}" id="example-text-input">

@@ -108,6 +108,7 @@ Route::controller(AboutController::class)->group(function(){
         Route::controller(FooterController::class)->group(function(){
             #Home
             Route::get('footer/all', 'FooterAll')->name('footer.all');
+            Route::post('update/footer', 'UpdateFooter')->name('update.footer');
 
         });
 
