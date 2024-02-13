@@ -20,6 +20,8 @@
         <link rel="stylesheet" href="{{asset('Frontend/assets/css/default.css')}}">
         <link rel="stylesheet" href="{{asset('Frontend/assets/css/style.css')}}">
         <link rel="stylesheet" href="{{asset('Frontend/assets/css/responsive.css')}}">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     </head>
     <body>
 
@@ -63,5 +65,28 @@
 <script src="{{asset('Frontend/assets/js/wow.min.js')}}"></script>
 <script src="{{asset('Frontend/assets/js/plugins.js')}}"></script>
 <script src="{{asset('Frontend/assets/js/main.js')}}"></script>
+
+<!--------start--------->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<!-----toaster flash --->
+        <script>
+            @if (Session::has ('message'))
+            var type="{{session::get('alert-type', 'info')}}"
+            switch (type) {
+                case 'info':
+                    toastr.info(" {{session::get('message')}} ");
+                    break;
+                case 'success':
+                    toastr.success(" {{session::get('message')}} ");
+                    break;
+                case 'warning':
+                    toastr.warning(" {{session::get('message')}} ");
+                    break;
+                case 'error':
+                    toastr.error(" {{session::get('message')}} ");
+                    break;
+            }
+            @endif
+        </script>
     </body>
 </html>

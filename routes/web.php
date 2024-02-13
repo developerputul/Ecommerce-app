@@ -8,6 +8,7 @@ use  App\Http\Controllers\Home\PortfolioController;
 use  App\Http\Controllers\Home\BlogCategoryController;
 use  App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\FooterController;
+use App\Http\Controllers\Home\ContactController;
 
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\Group;
@@ -86,7 +87,7 @@ Route::controller(AboutController::class)->group(function(){
         Route::post('update/blog/category/{id}','UpdateBlogCategory')->name('update.blog.category');
         Route::get('delete/blog/category/{id}','DeleteBlogCategory')->name('delete.blog.category');
 
-    });
+ });
 
     #Blog All routes
     Route::controller(BlogController::class)->group(function(){
@@ -103,12 +104,22 @@ Route::controller(AboutController::class)->group(function(){
         Route::get('category/blog/{id}', 'CategoryBlog')->name('category.blog');
         Route::get('/blog', 'HomeBlog')->name('home.blog');
 
-    });
+});
         #Footer-all routes
         Route::controller(FooterController::class)->group(function(){
             #Home
             Route::get('footer/all', 'FooterAll')->name('footer.all');
             Route::post('update/footer', 'UpdateFooter')->name('update.footer');
+
+    });
+        #Contact-all routes
+        Route::controller(ContactController::class)->group(function(){
+            #Home
+            Route::get('/contact', 'Contact')->name('contact.page');
+            Route::post('/store/message', 'StoreMessage')->name('store.message');
+            Route::get('/contact/all', 'ContactAll')->name('contact.all');
+            Route::get('/delete/contact/{id}', 'DeleteContact')->name('delete.contact');
+
 
         });
 

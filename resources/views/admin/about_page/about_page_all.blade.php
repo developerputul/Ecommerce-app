@@ -15,7 +15,7 @@
                 @if($aboutpage)
                 <form method="post" action="{{route('update.about')}}" enctype="multipart/form-data">
 
-                    @csrf
+                  @csrf
                     <input type="hidden" name="id" value="{{ $aboutpage->id }}">
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
@@ -63,6 +63,7 @@
                     </div>
                     <input type="Submit" class="btn btn-info" value="Update About Page">
                 </form>
+
                 @else
                     <p>No data found in the database !</p>
                 @endif
