@@ -27,7 +27,7 @@ $blogs = App\Models\Blog::latest()->limit(6)->get();
             @endforeach
         </div>
         <div class="blog__button text-center">
-            <a href="blog.html" class="btn">more blog</a>
+            <a href="blog" class="btn">more blog</a>
         </div>
     </div>
 </section>

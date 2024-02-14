@@ -124,4 +124,10 @@ class PortfolioController extends Controller
         return view('website.portfolio_details', compact('portfolio'));
     } //end Methods
 
+    public function HomePortfolio(){
+
+        $portfolio =Portfolio::latest()->get();
+        return view('website.portfolio', compact('portfolio'));
+    } //end Methods
+
 }
