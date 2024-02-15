@@ -1,5 +1,8 @@
 @extends('website.main_master')
 @section('main')
+@section('title')
+Contact | Easylearning Portfolio Website
+@endsection
 
 <main>
 

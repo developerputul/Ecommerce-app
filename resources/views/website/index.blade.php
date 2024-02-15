@@ -1,6 +1,11 @@
 @extends('website.main_master')
 @section('main')
 
+
+@section('title')
+Home | Easylearning Portfolio Website
+@endsection
+
             <!-- banner-area -->
     @include('website.home_all.home_slide')
             <!-- banner-area-end -->

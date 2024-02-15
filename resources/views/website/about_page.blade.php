@@ -1,6 +1,9 @@
 
 @extends('website.main_master')
 @section('main')
+@section('title')
+About | Easylearning Portfolio Website
+@endsection
 
 <main>
     <!-- breadcrumb-area -->

@@ -14,8 +14,9 @@
                     <h4 class="card-title mt-2">Add Blog Category page</h4> <br> <br>
 
 
-                <form method="post" action="{{route('store.blog.category')}}">
+                <form method="post" id="myForm" action="{{route('store.blog.category')}}">
                     @csrf
+
                     <input type="hidden" name="id" value="">
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Blog Category Name</label>
@@ -38,8 +39,6 @@
     </div>
   </div>
 </div>
-
-
 @endsection
 
 

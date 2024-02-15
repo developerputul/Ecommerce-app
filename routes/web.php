@@ -19,14 +19,15 @@ Route::get('/', function () {
     return view('website.index');
 });
 
+
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+#All Admin routes
+Route::middleware(['auth'])->group(function () {
 
-
-#-------------------------admin---------------------------------------------
 Route::controller(AdminController::class)->group(function(){
 
     Route::get('admin/logout', 'destroy')->name('admin.logout');
@@ -37,6 +38,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('change.password', 'Changepassword')->name('change.password');
     Route::post('update/password', 'UpdatePassword')->name('update.password');
 
+});
 });
 
     #Home-slide all routes
@@ -104,6 +106,7 @@ Route::controller(AboutController::class)->group(function(){
 
         Route::get('blog/details/{id}', 'BlogDetails')->name('blog.details');
         Route::get('category/blog/{id}', 'CategoryBlog')->name('category.blog');
+        
         Route::get('/blog', 'HomeBlog')->name('home.blog');
 
 });
